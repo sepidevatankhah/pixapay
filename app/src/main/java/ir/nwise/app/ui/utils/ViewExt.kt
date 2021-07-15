@@ -1,9 +1,8 @@
-package ir.nwise.app.ui
+package ir.nwise.app.ui.utils
 
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.annotation.LayoutRes
+import android.widget.Toast
+import ir.nwise.app.R
 
 /**
  * Replace old items with new items
@@ -14,6 +13,10 @@ fun <T> MutableCollection<T>.replaceAll(items: Collection<T>) {
     addAll(items)
 }
 
-fun ViewGroup.inflate(@LayoutRes layoutRes: Int): View {
-    return LayoutInflater.from(context).inflate(layoutRes, this, false)
+fun View.hide() {
+    visibility = View.GONE
+}
+
+fun View.show() {
+    visibility = View.VISIBLE
 }

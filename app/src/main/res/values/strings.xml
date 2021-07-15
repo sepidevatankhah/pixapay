@@ -1,9 +1,18 @@
 <resources>
     <string name="app_name">Photos</string>
     
-        <string name="views">views</string>
-        <string name="downloads">downloads</string>
-        <string name="likes">likes</string>
-        <string name="search_filter_default_value">flowers</string>
-        <string name="search_view_hint">Search photos</string>
+    <string name="views">views</string>
+    <string name="downloads">downloads</string>
+    <string name="likes">likes</string>
+    <string name="search_filter_default_value">flowers</string>
+    <string name="search_view_hint">Search photos</string>
+    
+    <string name="error">Oops!\n A problem occurred!</string>
+    <string name="oops">Oops!</string>
+    <string name="general_error_msg">A problem occurred!\nPlease try again.</string>
+    <string name="general_error_title">Oops.</string>
+    <string name="retry">Retry</string>
+    <string name="no_internet_error_msg">There was an error. Please check your internet connection and try again.</string>
+    <string name="no_internet_error_title">No Internet Connection!</string>
+    <string name="ok">OK</string>
 </resources>

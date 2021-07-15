@@ -3,8 +3,9 @@ package ir.nwise.app.domain.repository
 import android.content.Context
 import ir.nwise.app.data.Util.NetworkManager.isOnline
 import ir.nwise.app.database.PhotoDao
-import ir.nwise.app.domain.model.BasePhoto
-import ir.nwise.app.domain.model.PhotoResponse
+import ir.nwise.app.domain.AppRepository
+import ir.nwise.app.domain.models.BasePhoto
+import ir.nwise.app.domain.models.PhotoResponse
 import ir.nwise.app.networking.ApiService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

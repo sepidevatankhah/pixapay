@@ -5,7 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import ir.nwise.app.domain.model.PhotoResponse
+import ir.nwise.app.domain.models.PhotoResponse
 
 @Dao
 interface PhotoDao {

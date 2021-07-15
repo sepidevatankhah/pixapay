@@ -3,7 +3,7 @@ package ir.nwise.app.di
 import android.content.Context
 import ir.nwise.app.networking.ApiService
 import ir.nwise.app.database.PhotoDao
-import ir.nwise.app.domain.repository.AppRepository
+import ir.nwise.app.domain.AppRepository
 import ir.nwise.app.domain.repository.AppRepositoryImp
 import ir.nwise.app.domain.usecase.GetAllCachedPhotoUseCase
 import ir.nwise.app.domain.usecase.GetPhotoResultUseCase

@@ -7,5 +7,21 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="ir.nwise.app.ui.home.HomeFragment"
-        app:navGraph="@navigation/home_graph" />
+        app:navGraph="@navigation/home_graph">
+        <action
+            android:id="@+id/openDetail"
+            app:destination="@id/photoDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/photoDetailFragment"
+        android:name="ir.nwise.app.ui.detail.PhotoDetailFragment">
+        <argument
+            android:name="photo"
+            app:argType="ir.nwise.app.domain.models.PhotoResponse"
+            app:nullable="true" />
+    </fragment>
 </navigation>

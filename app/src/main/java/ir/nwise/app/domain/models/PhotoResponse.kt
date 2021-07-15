@@ -1,4 +1,4 @@
-package ir.nwise.app.domain.model
+package ir.nwise.app.domain.models
 
 import android.os.Parcelable
 import androidx.room.Entity

@@ -1,13 +1,8 @@
 package ir.nwise.app.ui.base
 
-import android.view.View
+import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.extensions.LayoutContainer
 
-abstract class BaseViewHolder<T>(
-    itemView: View
-) : RecyclerView.ViewHolder(itemView),
-    LayoutContainer {
-
+abstract class BaseViewHolder<T>(binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root) {
     abstract fun bind(model: T)
 }

@@ -1,7 +1,7 @@
 package ir.nwise.app.domain.usecase
 
-import ir.nwise.app.domain.model.BasePhoto
-import ir.nwise.app.domain.repository.AppRepository
+import ir.nwise.app.domain.models.BasePhoto
+import ir.nwise.app.domain.AppRepository
 import ir.nwise.app.domain.usecase.base.UseCase
 
 class InsertPhotoUseCase(private val appRepository: AppRepository) : UseCase<Long>() {

@@ -1,7 +1,7 @@
-package ir.nwise.app.domain.repository
+package ir.nwise.app.domain
 
-import ir.nwise.app.domain.model.BasePhoto
-import ir.nwise.app.domain.model.PhotoResponse
+import ir.nwise.app.domain.models.BasePhoto
+import ir.nwise.app.domain.models.PhotoResponse
 
 interface AppRepository {
     suspend fun getPhotoResult(): List<PhotoResponse>

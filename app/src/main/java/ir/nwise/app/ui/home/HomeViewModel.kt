@@ -1,6 +1,6 @@
 package ir.nwise.app.ui.home
 
-import ir.nwise.app.domain.model.PhotoResponse
+import ir.nwise.app.domain.models.PhotoResponse
 import ir.nwise.app.domain.usecase.GetPhotoResultUseCase
 import ir.nwise.app.domain.usecase.base.UseCaseResult
 import ir.nwise.app.ui.base.BaseViewModel
@@ -9,10 +9,10 @@ class HomeViewModel(private val getPhotoResultUseCase: GetPhotoResultUseCase) :
     BaseViewModel<HomeViewState>() {
 
     init {
-        getFoods()
+        getPhotos()
     }
 
-    private fun getFoods() {
+    internal fun getPhotos() {
         getPhotoResultUseCase.execute {
             when (this) {
                 is UseCaseResult.Success -> liveData.postValue(HomeViewState.Loaded(this.data))

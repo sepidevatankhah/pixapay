@@ -5,41 +5,54 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 
-abstract class BaseFragment<VS, VM : BaseViewModel<VS>> : Fragment() {
-
-    protected lateinit var viewModel: VM
+abstract class BaseFragment<ViewState, ViewModel : BaseViewModel<ViewState>, Binding : ViewDataBinding> :
+    Fragment() {
+    protected lateinit var viewModel: ViewModel
+    protected lateinit var binding: Binding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        setHasOptionsMenu(true)
-        return inflater.inflate(getLayout(), container, false)
+        binding = DataBindingUtil.inflate(inflater, getLayout(), container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        onCreateCompleted()
-        startObserving()
+        onCreateViewCompleted(savedInstanceState)
+        setHasOptionsMenu(true)
+        if (callObserverFromOnViewCreated)
+            startObserving()
     }
 
+    /**
+     * return your layout here
+     */
     @LayoutRes
     abstract fun getLayout(): Int
-
-    private fun startObserving() {
-        viewModel.liveData.observe(viewLifecycleOwner, Observer { state ->
-            render(state)
-        })
-    }
-
-    abstract fun render(state: VS)
 
     /**
      * add your code here every thing injected and view
      */
-    protected abstract fun onCreateCompleted()
+    abstract fun onCreateViewCompleted(savedInstanceState: Bundle?)
+
+    /**
+     * add all functionality of page after rendering the view state
+     */
+    abstract fun render(state: ViewState)
+
+    protected fun startObserving() {
+        viewModel.liveData.observe(viewLifecycleOwner, { state ->
+            render(state)
+        })
+    }
+
+    open var callObserverFromOnViewCreated: Boolean = true
+
 }

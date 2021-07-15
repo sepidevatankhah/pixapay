@@ -1,32 +1,29 @@
 package ir.nwise.app.ui.home
 
 import android.view.View
-import ir.nwise.app.domain.model.PhotoResponse
+import ir.nwise.app.databinding.ItemPhotoBinding
+import ir.nwise.app.domain.models.PhotoResponse
 import ir.nwise.app.ui.base.BaseViewHolder
-import ir.nwise.app.ui.loadUrl
-import kotlinx.android.synthetic.main.item_food.imgPreview
-import kotlinx.android.synthetic.main.item_food.txtDownload
-import kotlinx.android.synthetic.main.item_food.txtLikes
-import kotlinx.android.synthetic.main.item_food.txtUserName
-import kotlinx.android.synthetic.main.item_food.txtView
+import ir.nwise.app.ui.utils.loadUrl
+
 
 class PhotoViewHolder(
-    override val containerView: View,
+    val binding: ItemPhotoBinding,
     private val onItemClicked: (PhotoResponse) -> Unit
-) : BaseViewHolder<PhotoResponse>(containerView) {
+) : BaseViewHolder<PhotoResponse>(binding) {
 
     override fun bind(model: PhotoResponse) {
         with(model)
         {
-            txtUserName.text = userName
-            imgPreview.loadUrl(previewImageUrl)
-            txtLikes.text = likeNumber
-            txtDownload.text = downloadNumber
-            txtUserName.text = userName
-            txtView.text = viewNumber
-        }
-        with(containerView) {
-            setOnClickListener { onItemClicked.invoke(model) }
+            binding.apply {
+                txtUserName.text = userName
+                imgPreview.loadUrl(previewImageUrl)
+                txtLikes.text = likeNumber
+                txtDownload.text = downloadNumber
+                txtUserName.text = userName
+                txtView.text = viewNumber
+                root.setOnClickListener { onItemClicked.invoke(model) }
+            }
         }
     }
 }

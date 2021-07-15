@@ -1,6 +1,6 @@
 package ir.nwise.app.networking
 
-import ir.nwise.app.domain.model.BasePhoto
+import ir.nwise.app.domain.models.BasePhoto
 import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 import retrofit2.http.Query

@@ -1,12 +1,12 @@
 package ir.nwise.app.ui.home
 
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import ir.nwise.app.R
-import ir.nwise.app.domain.model.PhotoResponse
+import ir.nwise.app.databinding.ItemPhotoBinding
+import ir.nwise.app.domain.models.PhotoResponse
 import ir.nwise.app.ui.base.BaseViewHolder
-import ir.nwise.app.ui.inflate
-import ir.nwise.app.ui.replaceAll
+import ir.nwise.app.ui.utils.replaceAll
 
 internal class PhotoAdapter(
     private val onItemClicked: (PhotoResponse) -> Unit
@@ -18,8 +18,9 @@ internal class PhotoAdapter(
         parent: ViewGroup,
         viewType: Int
     ): BaseViewHolder<out PhotoResponse> {
+        val inflater = LayoutInflater.from(parent.context)
         return PhotoViewHolder(
-            containerView = parent.inflate(R.layout.item_food),
+            binding = ItemPhotoBinding.inflate(inflater, parent, false),
             onItemClicked = onItemClicked
         )
     }

@@ -1,4 +1,4 @@
-package ir.nwise.app.domain.model
+package ir.nwise.app.domain.models
 
 import com.google.gson.annotations.SerializedName
 
