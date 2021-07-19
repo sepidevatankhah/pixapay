@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.widget.SearchView
+import androidx.appcompat.app.AlertDialog
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import ir.nwise.app.R
@@ -24,9 +25,20 @@ class HomeFragment : BaseFragment<HomeViewState, HomeViewModel, FragmentHomeBind
     private var errorView: ErrorView? = null
 
     private val photoAdapter: PhotoAdapter = PhotoAdapter { model ->
-        binding.root.findNavController().navigate(
-            HomeFragmentDirections.openDetail(model)
-        )
+        with(requireContext())
+        {
+            AlertDialog.Builder(this)
+                .setTitle(getString(R.string.show_detail))
+                .setMessage(getString(R.string.open_detail))
+                .setPositiveButton(getString(R.string.ok)) { _, _ ->
+                    binding.root.findNavController().navigate(
+                        HomeFragmentDirections.openDetail(model)
+                    )
+                }
+                .setNegativeButton(getString(R.string.cancel)) { _, _ -> }
+                .setCancelable(false)
+                .show()
+        }
     }
 
     override fun getLayout(): Int = R.layout.fragment_home
@@ -116,14 +128,9 @@ class HomeFragment : BaseFragment<HomeViewState, HomeViewModel, FragmentHomeBind
 
     override fun onQueryTextChange(newText: String?): Boolean {
         newText?.let { newText ->
-//            Timber.d("query : %s", newText)
-            if (newText.trim().replace(" ", "").length >= 3 || newText.isEmpty()) {
-                viewModel.cachedFilter = newText
-                viewModel.getPhotos(newText)
-//                viewModel.createLiveData()
-                startObserving()
-
-            }
+            viewModel.cachedFilter = newText
+            viewModel.getPhotos(newText)
+            startObserving()
         }
         return true
     }
