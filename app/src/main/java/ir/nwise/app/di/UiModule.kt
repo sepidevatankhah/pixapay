@@ -9,5 +9,5 @@ import org.koin.dsl.module
 val uiModule = module {
     factory { HomeFragment() }
 
-    viewModel { HomeViewModel(get()) }
+    viewModel { HomeViewModel(get(), get()) }
 }
