@@ -1,5 +1,7 @@
 package ir.nwise.app.ui.home
 
+import androidx.lifecycle.viewModelScope
+import ir.nwise.app.domain.entities.PhotoModel
 import ir.nwise.app.domain.models.PhotoResponse
 import ir.nwise.app.domain.usecase.GetPhotoResultUseCase
 import ir.nwise.app.domain.usecase.base.UseCaseResult
@@ -8,12 +10,14 @@ import ir.nwise.app.ui.base.BaseViewModel
 class HomeViewModel(private val getPhotoResultUseCase: GetPhotoResultUseCase) :
     BaseViewModel<HomeViewState>() {
 
-    init {
-        getPhotos()
-    }
 
-    internal fun getPhotos() {
-        getPhotoResultUseCase.execute {
+    var cachedFilter: String = ""
+
+    internal fun getPhotos(filter: String) {
+        getPhotoResultUseCase.execute(
+            viewModelScope,
+            PhotoModel(query = if (cachedFilter.isEmpty()) filter else cachedFilter)
+        ) {
             when (this) {
                 is UseCaseResult.Success -> liveData.postValue(HomeViewState.Loaded(this.data))
                 is UseCaseResult.Error -> liveData.postValue(HomeViewState.Error(this.exception))

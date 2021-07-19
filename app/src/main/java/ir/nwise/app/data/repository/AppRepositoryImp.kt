@@ -1,9 +1,10 @@
-package ir.nwise.app.domain.repository
+package ir.nwise.app.data.repository
 
 import android.content.Context
 import ir.nwise.app.data.Util.NetworkManager.isOnline
 import ir.nwise.app.database.PhotoDao
 import ir.nwise.app.domain.AppRepository
+import ir.nwise.app.domain.entities.PhotoModel
 import ir.nwise.app.domain.models.BasePhoto
 import ir.nwise.app.domain.models.PhotoResponse
 import ir.nwise.app.networking.ApiService
@@ -15,9 +16,9 @@ class AppRepositoryImp(
     private val photoDao: PhotoDao,
     private val context: Context
 ) : AppRepository {
-    override suspend fun getPhotoResult(): List<PhotoResponse> {
+    override suspend fun getPhotoResult(param: PhotoModel): List<PhotoResponse> {
         return if (isOnline(context)) {
-            val response = apiService.getPhotos("", 50, 1).await()
+            val response = apiService.getPhotos(param.query, param.pageSize, param.pageNum).await()
             if (getAllPhotosFromCache().isEmpty())
                 savePhotos(response)
             response.photoList

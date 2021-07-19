@@ -1,40 +1,43 @@
 package ir.nwise.app.domain.usecase.base
 
+import ir.nwise.app.data.DispatcherProvider
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlin.coroutines.CoroutineContext
+import retrofit2.HttpException
 
 typealias CompletionBlock<T> = UseCaseResult<T>.() -> Unit
 
-abstract class UseCase<T> {
-    private var parentJob: Job = Job()
-    var backgroundContext: CoroutineContext = Dispatchers.IO
-    var mainContext: CoroutineContext = Dispatchers.Main
+abstract class UseCase<Param : Any?, Response>(private val dispatchers: DispatcherProvider) {
+    protected abstract suspend fun executeOnBackground(param: Param?): Response
 
-    protected abstract suspend fun executeOnBackground(): T
-
-    fun execute(block: CompletionBlock<T> ) {
+    fun execute(
+        coroutineScope: CoroutineScope,
+        param: Param? = null,
+        block: CompletionBlock<Response>
+    ) {
+        block(UseCaseResult.Loading)
         unsubscribe()
-        parentJob = Job()
-        CoroutineScope(mainContext + parentJob).launch {
+        coroutineScope.launch(dispatchers.job() + dispatchers.main()) {
             try {
-                val result = withContext(backgroundContext) {
-                    executeOnBackground()
+                val result = withContext(dispatchers.io()) {
+                    executeOnBackground(param)
                 }
                 block(UseCaseResult.Success(result))
+            } catch (error: HttpException) {
+                block(UseCaseResult.Error(error))
             } catch (cancellationException: CancellationException) {
                 block(UseCaseResult.Error(cancellationException))
+            } catch (e: Exception) {
+                block(UseCaseResult.Error(e))
             }
         }
     }
 
     fun unsubscribe() {
-        parentJob.apply {
+        dispatchers.job().apply {
             cancelChildren()
             cancel()
         }
@@ -43,6 +46,7 @@ abstract class UseCase<T> {
 }
 
 sealed class UseCaseResult<out T> {
+    object Loading : UseCaseResult<Nothing>()
     class Success<out T>(val data: T) : UseCaseResult<T>()
     class Error(val exception: Throwable) : UseCaseResult<Nothing>()
 }

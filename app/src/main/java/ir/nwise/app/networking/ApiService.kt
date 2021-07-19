@@ -9,8 +9,8 @@ interface ApiService {
 
     @GET("api/?")
     fun getPhotos(
-        @Query("q") query: String? = "",
-        @Query("per_page") pageSize: Int? = 50,
+        @Query("q") query: String?,
+        @Query("per_page") pageSize: Int?,
         @Query("page") pageNum: Int?
     ): Deferred<BasePhoto>
 }

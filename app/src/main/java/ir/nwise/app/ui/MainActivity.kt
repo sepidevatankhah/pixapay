@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
         val navController = this.findNavController(R.id.fragment_host_layout)
         NavigationUI.setupActionBarWithNavController(this, navController)
 
+//        supportActionBar?.setDisplayShowTitleEnabled(false)
     }
 
     override fun onSupportNavigateUp(): Boolean {
