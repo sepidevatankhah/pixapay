@@ -21,4 +21,4 @@ Technologies that have been used in this projects are :
 
  List View | Detail View 
  ------------- | ------------- 
- ![Alt text](https://monosnap.com/image/CJ0gOwglhn6WheOHOMhDYOBYoragZJ) | ![Alt text](https://monosnap.com/image/YfuA2llQYjKgPkx6dVDd0IbTNGNJmv) 
+ catList.png![catList](https://user-images.githubusercontent.com/22428059/126235010-4a74921d-7eed-4eda-9467-e343191d29fc.png) | detail.png![detail](https://user-images.githubusercontent.com/22428059/126235055-0e4e73d8-2d6f-4653-9870-9a3995d3eac4.png)
