@@ -10,7 +10,6 @@ Technologies that have been used in this projects are :
 - **Koin** : [Start Koin](https://insert-koin.io/) - Using Dependency injection to manage the dependencies in an optimal way.
 - **Glide** : To view images from the network - [An image loading and caching library for Android focused on smooth scrolling](https://github.com/bumptech/glide)
 - **Constraint-Layout** : [Build a Responsive UI with ConstraintLayout | Android Developers](https://developer.android.com/training/constraint-layout/index.html)
-- **Google Map**
 - **DataBinding** : The Data Binding Library is a support library that allows you to bind UI components in your layouts to data sources in your app using a declarative format rather than programmatically.
  </br>**Pros**: Null safety, Type safety and Supports both Kotlin and Java, **View binding** and **data binding** are recommended approach instead of *Kotlin Synthetics* or old way *findViewById*
 - **Unit Test** and **UI Test** : Mockito and Espresso 
