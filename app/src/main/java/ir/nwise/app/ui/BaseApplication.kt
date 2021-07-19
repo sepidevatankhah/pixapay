@@ -1,7 +1,6 @@
 package ir.nwise.app.ui
 
 import android.app.Application
-import ir.nwise.app.di.databaseModule
 import ir.nwise.app.di.domainModule
 import ir.nwise.app.di.networkModule
 import ir.nwise.app.di.uiModule
@@ -21,8 +20,7 @@ class BaseApplication : Application() {
                 listOf(
                     uiModule,
                     networkModule,
-                    domainModule,
-                    databaseModule
+                    domainModule
                 )
             )
         }
