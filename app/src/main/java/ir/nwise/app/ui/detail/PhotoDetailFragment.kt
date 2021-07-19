@@ -25,13 +25,20 @@ class PhotoDetailFragment : Fragment() {
         return binding.root
     }
 
-
     private fun showDetail() {
         binding.apply {
             args.photo?.let {
+                val tagsBuilder = StringBuilder()
+                it.tags.split(", ").forEach {
+                    tagsBuilder.append(it + "\n")
+                }
+
                 imgLargePhoto.loadUrl(it.largeImageUrl)
-                txtTags.text = it.tags
+                txtTags.text = tagsBuilder
+                txtLikes.text = it.likeNumber
                 txtUserName.text = it.userName
+                txtComments.text = it.commentNumber
+                txtDownloads.text = it.downloadNumber
 
             }
         }

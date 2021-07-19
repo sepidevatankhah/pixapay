@@ -17,37 +17,99 @@
                 android:id="@+id/imgLargePhoto"
                 android:layout_height="400dp"
                 android:layout_width="0dp"
-                android:scaleType="fitStart"
+                android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:src="@tools:sample/backgrounds/scenic" />
             
+            <ImageView
+                android:contentDescription="@string/likes"
+                android:id="@+id/imgLike"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/imgLargePhoto"
+                app:layout_constraintTop_toBottomOf="@+id/txtTags"
+                app:srcCompat="@drawable/ic_like" />
+            
+            <ImageView
+                android:contentDescription="@string/downloads"
+                android:id="@+id/imgDownloads"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_width="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/txtLikes"
+                app:layout_constraintTop_toTopOf="@+id/imgLike"
+                app:srcCompat="@drawable/ic_download" />
+            
+            <ImageView
+                android:contentDescription="@string/comments"
+                android:id="@+id/imgComments"
+                android:layout_height="19dp"
+                android:layout_marginStart="15dp"
+                android:layout_width="20dp"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toBottomOf="@+id/imgLike"
+                app:layout_constraintStart_toEndOf="@+id/txtDownloads"
+                app:layout_constraintTop_toTopOf="@+id/imgLike"
+                app:srcCompat="@drawable/ic_comment" />
+            
             <TextView
-                android:fontFamily="cursive"
+                style="@style/AppTheme.TextViewStyle"
+                android:id="@+id/txtLikes"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_width="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/imgLike"
+                app:layout_constraintStart_toEndOf="@+id/imgLike"
+                app:layout_constraintTop_toTopOf="@+id/imgLike"
+                tools:text="23" />
+            
+            <TextView
+                style="@style/AppTheme.TextViewStyle"
+                android:id="@+id/txtTags"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtUserName"
+                tools:text="$100,000" />
+            
+            <TextView
+                style="@style/AppTheme.TextViewStyle"
+                android:id="@+id/txtDownloads"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_width="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/imgDownloads"
+                app:layout_constraintStart_toEndOf="@+id/imgDownloads"
+                app:layout_constraintTop_toTopOf="@+id/imgDownloads"
+                tools:text="23" />
+            
+            <TextView
+                style="@style/AppTheme.HeaderTextStyle"
                 android:id="@+id/txtUserName"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_width="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="#de000000"
-                android:textSize="60sp"
-                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imgLargePhoto"
                 tools:text="To Rent" />
             
             <TextView
-                android:fontFamily="cursive"
-                android:id="@+id/txtTags"
+                style="@style/AppTheme.TextViewStyle"
+                android:id="@+id/txtComments"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_width="wrap_content"
-                android:textColor="#de000000"
-                android:textSize="24sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtUserName"
-                tools:text="$100,000" />
+                app:layout_constraintBottom_toBottomOf="@+id/imgComments"
+                app:layout_constraintStart_toEndOf="@+id/imgComments"
+                app:layout_constraintTop_toTopOf="@+id/imgComments"
+                tools:text="23" />
         
         </androidx.constraintlayout.widget.ConstraintLayout>
     

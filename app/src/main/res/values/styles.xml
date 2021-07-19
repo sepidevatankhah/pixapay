@@ -16,20 +16,8 @@
     
     <style name="AppTheme.HeaderTextStyle" parent="android:Widget.TextView">
         <item name="android:fontFamily">@font/campton_bold</item>
-        <item name="android:textSize">22sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/colorPrimaryDark</item>
-    </style>
-    
-    <style name="SplashTextViewStyle" parent="android:Widget.TextView">
-        <item name="android:textStyle">italic</item>
-        <item name="android:fontFamily">@font/campton_bold</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:textColor">@android:color/white</item>
-    </style>
-    
-    <style name="AppTheme.Splash" parent="@style/Theme.AppCompat.NoActionBar">
-        <item name="android:windowFullscreen">true</item>
-        <item name="android:windowContentOverlay">@null</item>
     </style>
 
 </resources>

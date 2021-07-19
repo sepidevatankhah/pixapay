@@ -28,7 +28,6 @@
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
         
         <ir.nwise.app.ui.widget.LoadingSpinner
-            tools:visibility="visible"
             android:id="@+id/spinner"
             android:layout_height="@dimen/loading_indicator_size"
             android:layout_width="@dimen/loading_indicator_size"
@@ -36,7 +35,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
     </androidx.constraintlayout.widget.ConstraintLayout>
     
     <data />

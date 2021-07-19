@@ -12,7 +12,7 @@ data class PhotoResponse(
     @SerializedName("webformatURL") val webFormatUrl: String,
     @SerializedName("previewURL") val previewImageUrl: String,
     @SerializedName("userImageURL") val userImageUrl: String,
-    @SerializedName("views") val viewNumber: String,
+    @SerializedName("comments") val commentNumber: String,
     @SerializedName("likes") val likeNumber: String,
     @SerializedName("tags") val tags: String,
     @SerializedName("downloads") val downloadNumber: String
